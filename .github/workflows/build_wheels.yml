@@ -21,7 +21,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: cibw-sdist
-        path: dist/*.tar.gz
+        path: ./wrappers/pyrichdem/dist/*.tar.gz
 
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+          path: ./wrappers/pyrichdem/wheelhouse/*.whl
 
   upload_all:
     needs: [build_wheels, make_sdist]
